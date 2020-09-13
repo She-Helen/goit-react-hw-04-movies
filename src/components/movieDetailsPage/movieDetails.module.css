@@ -1,0 +1,23 @@
+.btn {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.movieCard {
+  display: flex;
+  padding: 10px;
+}
+
+.genreList {
+  list-style: none;
+  display: flex;
+  margin: -10px;
+  padding: 0;
+}
+.genreListItem {
+  margin: 10px;
+}
+.addInf {
+  padding: 15px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}

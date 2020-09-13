@@ -1,0 +1,28 @@
+.nav {
+  padding: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+.navList {
+  list-style: none;
+  display: flex;
+  margin: -20px;
+
+  padding: 0;
+}
+
+.navListItem {
+  margin: 20px;
+}
+
+.Link {
+  color: black;
+  text-decoration: none;
+}
+
+.linkFocusColor,
+.Link:hover,
+.Link:focus {
+  font-weight: bold;
+  color: teal;
+}
