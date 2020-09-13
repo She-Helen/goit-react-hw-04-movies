@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { fetchMoviesWithQuery } from '../../services/moviesApi';
 import styles from './movies.module.css';
 
-export function MoviesPage(props) {
+function MoviesPage(props) {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [notice, setNotice] = useState('');
@@ -77,3 +77,4 @@ export function MoviesPage(props) {
     </div>
   );
 }
+export default MoviesPage;

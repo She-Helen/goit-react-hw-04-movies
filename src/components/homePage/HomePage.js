@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { fetchTrendingMovies } from '../../services/moviesApi';
 import styles from './home.module.css';
 
-export function HomePage(props) {
+function HomePage(props) {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -33,3 +33,4 @@ export function HomePage(props) {
     </>
   );
 }
+export default HomePage;

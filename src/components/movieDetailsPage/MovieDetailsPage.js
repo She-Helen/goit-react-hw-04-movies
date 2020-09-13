@@ -12,19 +12,25 @@ import { Cast } from '../cast/Cast';
 import { Reviews } from '../reviews/Reviews';
 import styles from './movieDetails.module.css';
 
-export function MovieDetailsPage(props) {
+function MovieDetailsPage(props) {
   const [movie, setMovie] = useState({});
   const [from, setFrom] = useState('');
   const [search, setSearch] = useState('');
+  const [error, setError] = useState('');
   const location = useLocation();
   const movieId = useRouteMatch().params.movieId;
 
   useEffect(() => {
     (async () => {
-      const getMovieDetails = await fetchMovieDetails(movieId);
-      setMovie(getMovieDetails);
+      try {
+        const getMovieDetails = await fetchMovieDetails(movieId);
+        setMovie(getMovieDetails);
+      } catch (error) {
+        setError({ error });
+      }
     })();
   }, [movieId]);
+
   useEffect(() => {
     setFrom(location.state && location.state.from ? location.state.from : '/');
     setSearch(
@@ -107,9 +113,13 @@ export function MovieDetailsPage(props) {
             <Route path="/movies/:movieId/reviews" component={Reviews} />
           </Switch>
         </>
-      )) || (
-        <p className="descr">The resource you requested could not be found.</p>
-      )}
+      )) ||
+        (error && (
+          <p className="descr">
+            The resource you requested could not be found.
+          </p>
+        ))}
     </>
   );
 }
+export default MovieDetailsPage;
