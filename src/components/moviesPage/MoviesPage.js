@@ -16,8 +16,6 @@ function MoviesPage(props) {
   const [notice, setNotice] = useState('');
   const location = useLocation();
 
-  console.log('MoviesPage props: ', props);
-
   const handleChange = ({ target: { value } }) => {
     setQuery(value);
   };
