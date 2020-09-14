@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { fetchTrendingMovies } from '../../services/moviesApi';
 import styles from './home.module.css';
+
+HomePage.propTypes = {
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+};
 
 function HomePage(props) {
   const [movies, setMovies] = useState([]);

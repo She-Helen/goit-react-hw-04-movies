@@ -109,3 +109,8 @@ img {
   font: inherit;
   font-size: 18px;
 }
+
+:global(.btn) {
+  margin-left: 10px;
+  cursor: pointer;
+}

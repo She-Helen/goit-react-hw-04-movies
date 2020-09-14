@@ -13,15 +13,17 @@ const MovieDetailsPage = lazy(() =>
     './movieDetailsPage/MovieDetailsPage' /* webpackChunkName: "movie-details-page" */
   ),
 );
-const PageNotFound = lazy(() => {
-  return <h2>Page not found ......</h2>;
-});
+const PageNotFound = lazy(() =>
+  import(
+    './pageNotFound/PageNotFound' /* webpackChunkName: "page-not-found" */
+  ),
+);
 
 export function App() {
   return (
     <>
-      <Nav />
       <Suspense fallback={<p>Loading...</p>}>
+        <Nav />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/movies" component={MoviesPage} />

@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { fetchMoviesWithQuery } from '../../services/moviesApi';
 import styles from './movies.module.css';
+
+MoviesPage.propTypes = {
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+};
 
 function MoviesPage(props) {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [notice, setNotice] = useState('');
   const location = useLocation();
+
+  console.log('MoviesPage props: ', props);
 
   const handleChange = ({ target: { value } }) => {
     setQuery(value);

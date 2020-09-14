@@ -6,11 +6,18 @@ import {
   useRouteMatch,
   useLocation,
 } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { fetchMovieDetails } from '../../services/moviesApi';
 import { Cast } from '../cast/Cast';
 import { Reviews } from '../reviews/Reviews';
 import styles from './movieDetails.module.css';
+
+MovieDetailsPage.propTypes = {
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+};
 
 function MovieDetailsPage(props) {
   const [movie, setMovie] = useState({});
@@ -26,7 +33,9 @@ function MovieDetailsPage(props) {
         const getMovieDetails = await fetchMovieDetails(movieId);
         setMovie(getMovieDetails);
       } catch (error) {
-        setError({ error });
+        if (error.response) {
+          setError(error.response.data.status_message);
+        }
       }
     })();
   }, [movieId]);
@@ -48,7 +57,7 @@ function MovieDetailsPage(props) {
             search: search,
           })
         }
-        className={styles.btn}
+        className="btn"
       >
         Go back
       </button>
@@ -114,11 +123,7 @@ function MovieDetailsPage(props) {
           </Switch>
         </>
       )) ||
-        (error && (
-          <p className="descr">
-            The resource you requested could not be found.
-          </p>
-        ))}
+        (error && <p className="descr">{error}</p>)}
     </>
   );
 }

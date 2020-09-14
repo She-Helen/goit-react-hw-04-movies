@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import styles from './nav.module.css';
 
-const Nav = props => {
+const Nav = () => {
   return (
     <nav className={styles.nav}>
       <ul className={styles.navList}>
@@ -20,7 +20,6 @@ const Nav = props => {
           <NavLink
             to={{
               pathname: '/movies',
-              // state: { from: props.location.pathname },
             }}
             className={styles.Link}
             activeClassName={styles.linkFocusColor}

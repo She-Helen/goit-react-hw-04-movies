@@ -37,13 +37,3 @@ export function Cast() {
     </>
   );
 }
-// {
-//   "cast_id": 12,
-//     "character": "Hua Mulan",
-//       "credit_id": "5a1f27efc3a3680b930821c6",
-//         "gender": 1,
-//           "id": 122503,
-//             "name": "Liu Yifei",
-//               "order": 0,
-//                 "profile_path": "/cL6JccAYqiZQEAIEFObEUC9LTt7.jpg"
-// }
