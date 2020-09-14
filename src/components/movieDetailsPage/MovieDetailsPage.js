@@ -47,18 +47,15 @@ function MovieDetailsPage(props) {
     );
   }, [location.state]);
 
+  const handelClick = () =>
+    props.history.push({
+      pathname: from,
+      search: search,
+    });
+
   return (
     <>
-      <button
-        type="button"
-        onClick={() =>
-          props.history.push({
-            pathname: from,
-            search: search,
-          })
-        }
-        className="btn"
-      >
+      <button type="button" onClick={handelClick} className="btn">
         Go back
       </button>
       {(movie.id && (

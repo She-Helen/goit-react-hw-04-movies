@@ -23,14 +23,14 @@ function MoviesPage(props) {
   const handleSubmit = evt => {
     evt.preventDefault();
     props.history.push({
-      search: query,
+      search: `query=${query}`,
     });
     setQuery('');
   };
 
   useEffect(() => {
     location.search &&
-      fetchMoviesWithQuery(location.search)
+      fetchMoviesWithQuery(location.search.slice(6))
         .then(results => {
           if (results.length) {
             setNotice('');
@@ -40,8 +40,7 @@ function MoviesPage(props) {
             setNotice("Sorry, we can't find anything for your request");
           }
         })
-
-        .catch(err => console.log(err));
+        .catch(error => setNotice(error.response.data.status_message));
   }, [location.search]);
 
   return (

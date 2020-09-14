@@ -8,17 +8,15 @@ PageNotFound.propTypes = {
 };
 
 function PageNotFound(props) {
+  const handelClick = () => {
+    props.history.push({
+      pathname: '/',
+    });
+  };
+
   return (
     <>
-      <button
-        type="button"
-        onClick={() => {
-          props.history.push({
-            pathname: '/',
-          });
-        }}
-        className="btn"
-      >
+      <button type="button" onClick={handelClick} className="btn">
         Go home
       </button>
       <h2 className="descr">Page not found ......</h2>
