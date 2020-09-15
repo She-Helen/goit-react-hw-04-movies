@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import queryString from 'query-string';
 import { fetchMoviesWithQuery } from '../../services/moviesApi';
 import styles from './movies.module.css';
 
@@ -15,6 +16,7 @@ function MoviesPage(props) {
   const [movies, setMovies] = useState([]);
   const [notice, setNotice] = useState('');
   const location = useLocation();
+  const search = queryString.parse(location.search);
 
   const handleChange = ({ target: { value } }) => {
     setQuery(value);
@@ -29,8 +31,8 @@ function MoviesPage(props) {
   };
 
   useEffect(() => {
-    location.search &&
-      fetchMoviesWithQuery(location.search.slice(6))
+    search.query &&
+      fetchMoviesWithQuery(search.query)
         .then(results => {
           if (results.length) {
             setNotice('');
@@ -41,7 +43,7 @@ function MoviesPage(props) {
           }
         })
         .catch(error => setNotice(error.response.data.status_message));
-  }, [location.search]);
+  }, [search.query]);
 
   return (
     <div className={styles.container}>
